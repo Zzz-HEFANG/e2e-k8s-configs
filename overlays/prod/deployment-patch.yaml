@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2e
+spec:
+  replicas: 3    # 生产环境需要更多副本以提供高可用性
+  template:
+    spec:
+      containers:
+      - name: e2e
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"

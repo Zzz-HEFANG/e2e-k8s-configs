@@ -1,0 +1,21 @@
+# deployment-patch.yaml（开发环境的部署补丁）
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2e
+spec:
+  replicas: 1    # 开发环境只需要一个副本
+  template:
+    spec:
+      containers:
+      - name: e2e
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+        env:
+        - name: DEBUG
+          value: "true"

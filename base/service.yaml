@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: e2e
+spec:
+  type: NodePort        # 服务类型
+  selector:
+    app: e2e           # 与 deployment 中的标签对应
+  ports:
+  - port: 80           # 服务端口
+    targetPort: 8080   # 容器端口
+    protocol: TCP      # 协议类型

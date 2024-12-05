@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base    # 引用基础配置
+
+namePrefix: dev-  # 给所有资源添加 dev- 前缀
+
+# 开发环境特定的资源配置
+resources: []
+
+# 开发环境的补丁
+patchesStrategicMerge:
+  - deployment-patch.yaml
+
+# 可以设置开发环境特定的配置
+configMapGenerator:
+  - name: e2e-config
+    literals:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=debug
