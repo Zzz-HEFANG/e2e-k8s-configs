@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2e
+spec:
+  replicas: 1    # 指定运行的副本数量
+  selector:
+    matchLabels:
+      app: e2e   # 用于选择要管理的 Pod
+  template:
+    metadata:
+      labels:
+        app: e2e # Pod 的标签，要与上面的 selector 匹配
+    spec:
+      containers:
+      - name: e2e
+        image: oliver0313/e2e:latest  # 使用的 Docker 镜像
+        ports:
+        - containerPort: 8080         # 容器内部端口
+        resources:                    # 资源限制
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
