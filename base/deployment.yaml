@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: e2e
-        image: oliver0313/e2e:1.0.0-37  # 使用的 Docker 镜像
+        image: oliver0313/e2e:1.0.0-40
         ports:
         - containerPort: 8080         # 容器内部端口
         resources:                    # 资源限制
